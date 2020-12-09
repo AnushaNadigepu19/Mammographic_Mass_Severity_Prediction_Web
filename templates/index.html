@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Mammographic Mass Severity Prediction</h1>
+    <form action="{% url 'result' %}" method="get">
+      {% csrf_token %}
+
+      <p>BIRADS_assessment:(i/p values: 1 to 5 )</p>
+      <input type="text" name="birads_assessment">
+      <br>
+
+      <p>Age:</p>
+      <input type="text" name="age">
+      <br>
+
+      <p>Shape:(i/p values: round=1 oval=2 lobular=3 irregular=4)</p>
+      <input type="text" name="shape">
+      <br>
+
+      <p>Margin:(i/p values: circumscribed=1 microlobulated=2 obscured=3 ill-defined=4 spiculated=5)</p>
+      <input type="text" name="margin">
+      <br>
+
+      <p>Density:(i/p values: high=1 iso=2 low=3 fat-containing=4 )</p>
+      <input type="text" name="density">
+      <br>
+
+      <input type="submit" value='Get Predictions'>
+    </form>
+</body>
+</html>
