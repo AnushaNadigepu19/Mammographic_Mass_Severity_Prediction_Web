@@ -1,4 +1,6 @@
 from django.shortcuts import render
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 #Home page view
 
@@ -10,7 +12,7 @@ def home(request):
 # custom method for generating predictions
 def getPredictions(birads_assessment, age, shape, margin, density):
     import pickle
-    model = pickle.load(open('C://Users//anadi//OneDrive - Lambton College//AML_1204_PythonProg//Project//Mammographic_Mass_Severity_Prediction//Mammographic_Mass_Severity_Prediction_Web//Mammographic_Mass_Severity_Prediction_Web//model.pkl', 'rb'))
+    model = pickle.load(open(os.path.join(BASE_DIR, "Mammographic_Mass_Severity_Prediction_Web\ModelFiles\model.pkl"), 'rb'))
     prediction = model.predict([[birads_assessment, age, shape, margin, density]])
 
     if prediction == 0:

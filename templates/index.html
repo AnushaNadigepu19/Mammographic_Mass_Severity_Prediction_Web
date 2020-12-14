@@ -1,35 +1,103 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<style >
+
+   body{
+      background-image: url(https://images.squarespace-cdn.com/content/v1/54340cf6e4b08690c01ba851/1568320423242-3PGAD2ET1KNJ0K0VTAYO/ke17ZwdGBToddI8pDm48kBFVs2udq9uuGsb4EEKKWXR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UTThiVgEomory_tyVbCjf06-dfjgsh41iMMUJL4RFfJjIeF2EpoLyt6sn0O4yV-0Ew/Naturopathic-Doctor-Edmonton-Laboratory-Testing.jpg?format=2500w);
+   }
+
+
+</style>
     <meta charset="UTF-8">
     <title>Home Page</title>
 </head>
 <body>
-    <h1>Mammographic Mass Severity Prediction</h1>
+
+    <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <h1 align="center"> <span class="badge bg-light text-dark">Mammographic Mass Severity Prediction </span> </h1>
+
+        </div>
+
+
+
     <form action="{% url 'result' %}" method="get">
       {% csrf_token %}
 
-      <p>BIRADS_assessment:(i/p values: 1 to 5 )</p>
-      <input type="text" name="birads_assessment">
-      <br>
+<br>
+{% block content %}
 
-      <p>Age:</p>
-      <input type="text" name="age">
-      <br>
+{% endblock %}
+      <div class="col-md-2" >
+         <h5><label for="birads_assessment" class="badge bg-light text-dark">BIRADS Assessment</label> </h5>
+        <select id="birads_assessment" class="form-select" name="birads_assessment">
 
-      <p>Shape:(i/p values: round=1 oval=2 lobular=3 irregular=4)</p>
-      <input type="text" name="shape">
-      <br>
+        <option selected >Choose... </option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+      </div>
+        <br>
+    <div class="col-md-1">
+        <h5><label for="age" class="badge bg-light text-dark">Age</label></h5>
+      <input type="text" id="age" name="age">
+    </div>
+<br>
+    <div class="col-md-2">
+        <h5><label for="shape" class="form-label badge bg-light text-dark">Shape [1 : Round ,2 : Oval ,3 : Lobular ,4 : Irregular]</label></h5>
 
-      <p>Margin:(i/p values: circumscribed=1 microlobulated=2 obscured=3 ill-defined=4 spiculated=5)</p>
-      <input type="text" name="margin">
-      <br>
+          <select id="shape" class="form-select" name="shape">
 
-      <p>Density:(i/p values: high=1 iso=2 low=3 fat-containing=4 )</p>
-      <input type="text" name="density">
-      <br>
+        <option selected>Choose...</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
 
-      <input type="submit" value='Get Predictions'>
+            </select>
+      </div>
+          <br>
+  <div class="col-md-2">
+        <h5><label for="margin" class="form-label badge bg-light text-dark" >Margin [1 : Circumscribed ,2 : Microlobulated,3 : Obscured,4 : Ill-defined, 5 : Spiculated ]</label></h5>
+        <select id="margin" class="form-select" name="margin">
+
+        <option selected>Choose...</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+
+        </select>
+    </div>
+          <br>
+   <div class="col-md-2">
+        <h5><label for="density" class="form-label badge bg-light text-dark" >Density [1 : High,2 : Iso,3 : Low, 4 : Fat-containing ]</label> </h5>
+        <select id="density" class="form-select" name="density">
+
+        <option selected>Choose...</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+
+
+        </select>
+    </div>
+
+
+<br>
+    <div class="col-md-2">
+      <input type="submit" class="btn btn-secondary" value="Get Predictions">
+    </div>
     </form>
+
 </body>
+
+
 </html>
